@@ -183,6 +183,8 @@ spec:
         ports:
         - name: "metrics"
           containerPort: 9101
+          hostPort: 9101
+          hostIP: localhost
           protocol: "TCP"
         - name: "traefik"
           containerPort: 9001

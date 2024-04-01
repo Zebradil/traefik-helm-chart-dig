@@ -162,7 +162,7 @@ spec:
         readinessProbe:
           httpGet:
             path: /ping
-            port: 9000
+            port: 9001
             scheme: HTTP
           failureThreshold: 1
           initialDelaySeconds: 2
@@ -172,7 +172,7 @@ spec:
         livenessProbe:
           httpGet:
             path: /ping
-            port: 9000
+            port: 9001
             scheme: HTTP
           failureThreshold: 3
           initialDelaySeconds: 2
@@ -185,7 +185,7 @@ spec:
           containerPort: 9100
           protocol: "TCP"
         - name: "traefik"
-          containerPort: 9000
+          containerPort: 9001
           protocol: "TCP"
         - name: "web"
           containerPort: 8000
@@ -212,7 +212,7 @@ spec:
           - "--global.checknewversion"
           - "--global.sendanonymoususage"
           - "--entrypoints.metrics.address=:9100/tcp"
-          - "--entrypoints.traefik.address=:9000/tcp"
+          - "--entrypoints.traefik.address=:9001/tcp"
           - "--entrypoints.web.address=:8000/tcp"
           - "--entrypoints.websecure.address=:8443/tcp"
           - "--api.dashboard=true"

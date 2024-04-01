@@ -1,5 +1,9 @@
 ingressClass:
   enabled: false
+ports:
+  traefik:
+    # Override the default port to avoid conflicts with other services
+    port: 9001
 hostNetwork: true
 deployment:
   dnsPolicy: ClusterFirstWithHostNet

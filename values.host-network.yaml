@@ -1,9 +1,11 @@
 ingressClass:
   enabled: false
 ports:
+  # Override the default ports to avoid conflicts with other services
   traefik:
-    # Override the default port to avoid conflicts with other services
     port: 9001
+  metrics:
+    port: 9101
 hostNetwork: true
 deployment:
   dnsPolicy: ClusterFirstWithHostNet

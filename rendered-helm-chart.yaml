@@ -143,7 +143,7 @@ spec:
       annotations:
         prometheus.io/scrape: "true"
         prometheus.io/path: "/metrics"
-        prometheus.io/port: "9100"
+        prometheus.io/port: "9101"
       labels:
         app.kubernetes.io/name: traefik
         app.kubernetes.io/instance: traefik-test-default
@@ -182,7 +182,7 @@ spec:
         lifecycle:
         ports:
         - name: "metrics"
-          containerPort: 9100
+          containerPort: 9101
           protocol: "TCP"
         - name: "traefik"
           containerPort: 9001
@@ -211,7 +211,7 @@ spec:
         args:
           - "--global.checknewversion"
           - "--global.sendanonymoususage"
-          - "--entrypoints.metrics.address=:9100/tcp"
+          - "--entrypoints.metrics.address=:9101/tcp"
           - "--entrypoints.traefik.address=:9001/tcp"
           - "--entrypoints.web.address=:8000/tcp"
           - "--entrypoints.websecure.address=:8443/tcp"

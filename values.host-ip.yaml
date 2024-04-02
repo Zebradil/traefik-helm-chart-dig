@@ -1,4 +1,4 @@
 ports:
   metrics:
-    hostIP: localhost
+    hostIP: 192.168.0.74
     hostPort: 9101

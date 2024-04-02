@@ -6,12 +6,12 @@ ports:
     port: 9001
   metrics:
     port: 9101
-# hostNetwork: true
-# deployment:
-#   dnsPolicy: ClusterFirstWithHostNet
-# securityContext:
-#   capabilities:
-#     drop: [ALL]
-#     add: [NET_BIND_SERVICE]
-#   runAsNonRoot: false
-#   runAsUser: 0
+hostNetwork: true
+deployment:
+  dnsPolicy: ClusterFirstWithHostNet
+securityContext:
+  capabilities:
+    drop: [ALL]
+    add: [NET_BIND_SERVICE]
+  runAsNonRoot: false
+  runAsUser: 0

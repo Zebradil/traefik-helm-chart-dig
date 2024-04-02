@@ -152,7 +152,8 @@ spec:
     spec:
       serviceAccountName: traefik-test
       terminationGracePeriodSeconds: 60
-      hostNetwork: false
+      hostNetwork: true
+      dnsPolicy: ClusterFirstWithHostNet
       containers:
       - image: docker.io/traefik:v2.11.0
         imagePullPolicy: IfNotPresent
@@ -197,9 +198,13 @@ spec:
         securityContext:
           allowPrivilegeEscalation: false
           capabilities:
+            add:
+            - NET_BIND_SERVICE
             drop:
             - ALL
           readOnlyRootFilesystem: true
+          runAsNonRoot: false
+          runAsUser: 0
         volumeMounts:
           - name: data
             mountPath: /data
@@ -208,7 +213,7 @@ spec:
         args:
           - "--global.checknewversion"
           - "--global.sendanonymoususage"
-          - "--entrypoints.metrics.address=:9101/tcp"
+          - "--entrypoints.metrics.address=localhost:9101/tcp"
           - "--entrypoints.traefik.address=:9001/tcp"
           - "--entrypoints.web.address=:8000/tcp"
           - "--entrypoints.websecure.address=:8443/tcp"
